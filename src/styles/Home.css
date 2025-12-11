@@ -1,0 +1,33 @@
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-content {
+  flex: 1;
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  gap: 24px;
+  padding: 24px;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 24px;
+  height: fit-content;
+}
+
+@media (max-width: 968px) {
+  .home-content {
+    flex-direction: column;
+    padding: 16px;
+  }
+}
+
