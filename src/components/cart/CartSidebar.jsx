@@ -1,9 +1,11 @@
+import { useNavigate } from 'react-router-dom'
 import { useCart } from '../../hooks/useCart'
 import CartItem from './CartItem'
 import { FaTimes } from 'react-icons/fa'
 import '../../styles/CartSidebar.css'
 
 const CartSidebar = () => {
+  const navigate = useNavigate()
   const { isCartOpen, closeCart, cartItems, getTotalPrice } = useCart()
 
   if (!isCartOpen) return null
@@ -37,7 +39,13 @@ const CartSidebar = () => {
                   <span className="total-label">Total:</span>
                   <span className="total-value">${getTotalPrice().toLocaleString('es-CO')}</span>
                 </div>
-                <button className="checkout-button">
+                <button 
+                  className="checkout-button"
+                  onClick={() => {
+                    closeCart()
+                    navigate('/checkout')
+                  }}
+                >
                   Proceder al pago
                 </button>
               </div>

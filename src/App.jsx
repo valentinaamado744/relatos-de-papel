@@ -4,6 +4,7 @@ import Login from './pages/Login'
 import Home from './pages/Home'
 import BookDetail from './pages/BookDetail'
 import Landing from './pages/Landing'
+import Checkout from './pages/Checkout'
 
 function App() {
   const { isAuthenticated } = useAuth()
@@ -25,6 +26,10 @@ function App() {
       <Route 
         path="/book/:id" 
         element={isAuthenticated ? <BookDetail /> : <Navigate to="/login" replace />} 
+      />
+      <Route 
+        path="/checkout" 
+        element={isAuthenticated ? <Checkout /> : <Navigate to="/login" replace />} 
       />
     </Routes>  
   )
