@@ -57,6 +57,11 @@ export const CartProvider = ({ children }) => {
         setIsCartOpen(false)
     }
 
+    const clearCart = () => {
+        setCartItems([])
+        setIsCartOpen(false)
+    }
+
     return (
         <CartContext.Provider
             value={{
@@ -68,7 +73,8 @@ export const CartProvider = ({ children }) => {
                 getTotalPrice,
                 getTotalItems,
                 openCart,
-                closeCart
+                closeCart,
+                clearCart
             }}
         >
             {children}

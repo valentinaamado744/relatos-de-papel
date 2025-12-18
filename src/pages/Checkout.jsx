@@ -6,8 +6,8 @@ import '../styles/Checkout.css'
 
 const Checkout = () => {
   const navigate = useNavigate()
-  const { cartItems, getTotalPrice } = useCart()
-  
+  const { cartItems, getTotalPrice, clearCart } = useCart()
+
   const [formData, setFormData] = useState({
     // Información de envío
     fullName: '',
@@ -79,10 +79,11 @@ const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    
+
     if (validateForm()) {
       // Aquí iría la lógica de procesamiento del pago
       alert('¡Compra procesada exitosamente! Gracias por tu compra.')
+      clearCart()
       navigate('/home')
     }
   }
@@ -120,7 +121,7 @@ const Checkout = () => {
             {/* Información de Envío */}
             <div className="form-section">
               <h2 className="section-title">Información de Envío</h2>
-              
+
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="fullName">Nombre completo *</label>
@@ -299,11 +300,11 @@ const Checkout = () => {
         {/* Resumen del Pedido */}
         <div className="checkout-summary">
           <h2 className="summary-title">Resumen del Pedido</h2>
-          
+
           <div className="summary-items">
             {cartItems.map(item => (
               <div key={item.id} className="summary-item">
-                <img src={item.cover} alt={item.title} className="summary-item-image" />
+                <img src={item.image} alt={item.title} className="summary-item-image" />
                 <div className="summary-item-info">
                   <h3>{item.title}</h3>
                   <p>{item.author}</p>
