@@ -1,11 +1,25 @@
-import { defineConfig } from "cypress";
+const { defineConfig } = require("cypress");
 
-export default defineConfig({
-  allowCypressEnv: false,
+module.exports = defineConfig({
+
+  video: true,
+  screenshotOnRunFailure: true,
+
+  defaultCommandTimeout: 8000,
+  pageLoadTimeout: 60000,
+
+  viewportWidth: 1280,
+  viewportHeight: 720,
 
   e2e: {
+    baseUrl: "http://localhost:5173",
+
+    watchForFileChanges: false,
+    numTestsKeptInMemory: 0,
+
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      return config;
     },
   },
+
 });
